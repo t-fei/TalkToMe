@@ -1,5 +1,5 @@
 //Based on a Speech-To-Text Library example &
-// Florian Schulz 2014, http://stt.getflourish.com/
+// Florian Schulz 2014, http://florianschulz.info/stt/archive/
 //1st attempt for combining voice recognition&transformation
 //Problem: transformation loops once detects word
 
