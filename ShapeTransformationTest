@@ -1,0 +1,107 @@
+int pointP = 4;
+int pointN = -4;
+int points =4;
+int angle = 0;
+float radius = 300;
+color[]      userClr = new color[] { 
+  color(0, 219, 252, 255), 
+  color(0, 252, 166, 255), 
+  color(210, 0, 204, 10), 
+  color(66, 0, 255, 10), 
+  color(255, 255, 255, 250)
+};
+
+void setup() {
+  size(800, 800, OPENGL);
+  smooth();
+  frameRate(300);
+}
+
+void draw() {
+  background(0);
+  if (pointP+pointN < 0) {
+    angle = 40;
+    points = -pointP-pointN+4;
+    pushMatrix();
+    translate(width*0.5, height*0.5);
+    rotate(frameCount / 400.0);
+    star(0, 0, angle, 100, points, userClr[0], userClr[1]); 
+    popMatrix();
+
+    println("pointP = " + pointP);
+    println("pointN = " + pointN);
+    println("total points = " + points);
+  } else if (pointN+pointP >= 0) {
+    points = pointP+pointN+4;
+    pushMatrix();
+    translate(width*0.5, height*0.5);
+    rotate(frameCount / 400.0);
+    polygon(0, 0, radius, points);
+    popMatrix();
+
+    println("pointP = " + pointP);
+    println("pointN = " + pointN);
+    println("total points = " + points);
+  }
+}
+
+
+  void star(float x, float y, float radius1, float radius2, int points, color color1, color color2) {
+    float angle = TWO_PI / points;
+    float halfAngle = angle/2.0;
+    beginShape();
+    for (float a = 0; a < TWO_PI; a += angle) {
+      float sx = x + cos(a) * radius2;
+      float sy = y + sin(a) * radius2;
+      //fill(userClr[int(random(4))]);
+      vertex(sx, sy);
+      sx = x + cos(a+halfAngle) * radius1;
+      sy = y + sin(a+halfAngle) * radius1;
+      fill(userClr[int(random(4))]);
+      vertex(sx, sy);
+    }
+    endShape(CLOSE);
+  }
+  
+//polygon
+void polygon(float x, float y, float radius, int npoints) {
+  float angle = TWO_PI / npoints;
+  beginShape();
+  int corner = 0;
+  for (float a = 0; a < TWO_PI; a += angle) {
+    float sx = x + cos(a) * radius;
+    float sy = y + sin(a) * radius;
+    //option 1 
+    fill(userClr[int(random(4))]);
+    //option 2
+//    if(corner < 5) {
+//      fill(userClr[corner]);
+//      corner++;
+//      println("corner: " + corner);
+//      }
+    //option 3
+//    if(corner < 5) {
+//      fill(userClr[corner]);
+//      corner++;
+//      //radius++;
+//      println("corner: " + corner);
+//      }else{
+//      corner = 0;
+//      }    
+    vertex(sx, sy);
+    
+  }
+  endShape(CLOSE);
+}
+
+
+//keys
+void keyPressed() {
+  if (key == 'p') {
+    pointP = pointP+1;
+  }
+
+  if (key == 'n') {
+    pointN = pointN - 1;
+  }
+}
