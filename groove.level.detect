@@ -14,5 +14,5 @@ void setup()
 void draw()
 {
 print(groove.mix.level());
-delay(500);
+delay(250);
 }
