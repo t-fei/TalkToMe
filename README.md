@@ -1,7 +1,5 @@
 # TalkToMe
-In this project, we are interested in transforming single individual speech into group of activities/community using data visuali. 
-
-The following describes how to set up a Processing Library project in Eclipse and build it successfully, and to make your Library ready for distribution.
+In this project 
 
 Requirements:
 Processing
