@@ -1,0 +1,51 @@
+import processing.serial.*;
+import guru.ttslib.*;
+Serial myPort;      
+TTS tts;
+// The serial port
+
+int sensors[2];
+int pSensors[2];
+//int myX;
+float f;
+
+
+void setup() {
+  size(700, 500);
+  println(Serial.list());
+  myPort = new Serial(this, Serial.list()[1], 9600);
+  myPort.bufferUntil('\n');
+  smooth();
+  tts = new TTS();
+} 
+
+void draw() {
+  //  if (inString != null) {     // trim off any whitespace:     
+  //    inString = trim(inString);     
+  //    float inByte = float(inString);
+  //    //    if (inByte<50) {
+  //    //      tts.speak ("hello" );
+  //    //      delay(3000);
+  //    //    } else {
+  //    //    }
+  //  }
+  if (pSensors != null && sensors != null) {
+    //for (int i =1; i < 2; i++) {
+      println(pSensors);
+      println(sensors);
+    if (sensors[0] < 20 && pSensors[0] > 20) {
+      tts.speak ("hello");
+      println("Run speak");
+    }
+  }
+}
+
+void serialEvent(Serial myPort) {
+  String inString = myPort.readStringUntil('\n');   
+  if (inString != null) {     // trim off any whitespace:     
+    inString = trim(inString);     
+    //float inByte = float(inString);
+    pSensors = sensors;
+    sensors = int(split(inString, ','));
+  }
+}
