@@ -29,12 +29,11 @@
 
 ###PRESENTATION
 
-1. Project Desbrition
+- Project Desbrition
 [talk to me.pdf](https://github.com/t-fei/TalkToMe/files/37354/talk.to.me.pdf)
----
-2. Update on 12th., Nov. 
+
+- Update on 12th., Nov. 
 [updateNov12.pdf](https://github.com/t-fei/TalkToMe/files/37422/updateNov12.pdf)
----
 
 
 
