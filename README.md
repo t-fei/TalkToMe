@@ -23,4 +23,12 @@ Installation:
 
 
 Finite-state Machine:
+
+
+
+
+
+
+
+
 ![finitestate](https://cloud.githubusercontent.com/assets/15851423/11229293/d38c081c-8d48-11e5-8a29-30715b6514dc.jpg)
