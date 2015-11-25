@@ -1,0 +1,44 @@
+import processing.serial.*;
+import guru.ttslib.*;
+
+Serial myPort;
+String inString;
+int inByte;
+TTS tts;
+String oldinString;
+
+
+
+// The serial port
+
+
+void setup() {
+  size(700, 500);
+  background(0);
+  println(Serial.list());
+  myPort = new Serial(this, Serial.list()[1], 9600);
+  myPort.bufferUntil('\n');
+  smooth();
+  tts = new TTS();
+}
+
+void draw() {  
+ //tts.speak("one"); 
+ String inString = myPort.readStringUntil('\n'); 
+ if (inString != null) {    // trim off any whitespace:    
+      println(inString);
+      inString = trim(inString);     
+      inByte = int(inString); 
+      println(inByte);
+      
+    
+    if (inByte<5) {
+       tts.speak( "hello");
+       
+     }
+     else{
+     }
+      }
+  
+  //tts.speak("one"); 
+}
